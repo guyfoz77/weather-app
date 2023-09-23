@@ -4,23 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="main.js" defer></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
   <main class="mainContainer">
     <div class="todayWeather">
-      <div class="currentTemp"></div>
-      <div class="currentWind"></div>
-      <div class="currentUV"></div>
-      <div class="currentHumidity"></div>
-      <h2 class="currentConditionText"></h2>
+      <h4 class="currentConditionText"></h4>
       <img class="currentConditionImage" src="" alt="" srcset="">
+      <h2 class="currentTemp"></h2>
+      <div class="otherInfo">
+        <h5 class="currentWind"></h5>
+        <h5 class="currentUV"></h5>
+        <h5 class="currentHumidity"></h5>
+      </div>
     </div>
     <div class="futureWeather">
       <nav class="tabs">
-        <button class="day1">tomorrow</button>
-        <button class="day2">day after</button>
-        <button class="day3">day after that</button>
+        <button class="day1" data-day="0">tomorrow</button>
+        <button class="day2" data-day="1">day after</button>
+        <button class="day3" data-day="2">day after that</button>
       </nav>
       <div class="futureWeatherContent">
 
