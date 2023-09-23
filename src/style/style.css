@@ -10,6 +10,7 @@ h1, h2, h3, h4, h5 {
 body, html {
   margin: 0;
   height: 100%;
+  background: radial-gradient(circle at 10% 20%, rgb(253, 239, 132) 0%, rgb(247, 198, 169) 54.2%, rgb(21, 186, 196) 100.3%);
 }
 h2 {
   font-size: 5rem;
@@ -31,6 +32,12 @@ h2 {
       grid-row: 1 / 4;
       grid-column: 2 / 3;
     }
-    .otherInfo {
-
+  
+  .futureWeather {
+    display: flex;
+    flex-direction: column;
+  }
+    .futureWeatherContent {
+      display: flex;
+      overflow: scroll;
     }

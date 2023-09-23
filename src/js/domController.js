@@ -17,7 +17,7 @@ function elementBuilder(element, classList, textContent, dataName) {  //element 
   return xelement;
 }
 
-export function currentWeatherUpdater(forecast) {
+export function currentWeatherUpdater(day, forecast) {
   const currentTemp = document.querySelector('.currentTemp');
   const currentWind = document.querySelector('.currentWind');
   const currentHumidity = document.querySelector('.currentHumidity');
@@ -31,7 +31,7 @@ export function currentWeatherUpdater(forecast) {
   currentConditionImage.src = forecast.current.condition.icon;
 }
 
-function tabContentBuilder(forecast) {
+function hourlyContentBuilder(forecast) {
   let hourContainers = [];
   for(let i = 0; forecast.hour.length > i; i++) {
     const hourContainer = elementBuilder('div', 'hourContainer', '', '');
@@ -49,14 +49,15 @@ function tabContentBuilder(forecast) {
   }
   return hourContainers;
 }
-function tabSwitcher(tabNumber, forecast) {
-  const tabContentContainer = document.querySelector('.futureWeatherContent');
-  const tabContent = tabContentBuilder(forecast.forecast.forecastday[tabNumber]);
-  tabContentContainer.append(...tabContent);
+function tabSwitcher(day, forecast) {
+  const hourlyContentContainer = document.querySelector('.futureWeatherContent');
+  const hourlyContent = hourlyContentBuilder(forecast.forecast.forecastday[day]);
+  hourlyContentContainer.append(...hourlyContent);
 }
 
 export async function init() {
+  //days: 0=today, 1=tomorrow, 2=day after
   const forecast = await getForecast('nottingham');
-  currentWeatherUpdater(forecast);
+  currentWeatherUpdater(0, forecast);
   tabSwitcher(0, forecast);
 }
