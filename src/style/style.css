@@ -54,7 +54,7 @@ h2 {
     display: flex;
     flex-direction: column;
   }
-    .futureWeatherContent {
+    .futureWeatherHourContent {
       display: flex;
       overflow: scroll;
     }

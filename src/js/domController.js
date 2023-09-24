@@ -53,14 +53,20 @@ function tabEventListeners(forecast) {
   const tabs = document.querySelectorAll('.tabs button');
   tabs.forEach(tab => {
     tab.addEventListener('click', e => {
-      tabSwitcher(e.target.dataset.day , forecast)
+      tabSwitcher(e.target.dataset.day , forecast);
     })
   });
   console.log(tabs);
 }
 function tabSwitcher(day, forecast) {
+  const tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(tab => {
+    tab.classList.remove('selected');
+    if (tab.dataset.day == day) tab.classList.add('selected');
+  });
+
   currentWeatherUpdater(0, forecast);
-  const hourlyContentContainer = document.querySelector('.futureWeatherContent');
+  const hourlyContentContainer = document.querySelector('.futureWeatherHourContent');
   hourlyContentContainer.innerHTML = '';
   const hourlyContent = hourlyContentBuilder(forecast.forecast.forecastday[day]);
   hourlyContentContainer.append(...hourlyContent);
