@@ -49,8 +49,19 @@ function hourlyContentBuilder(forecast) {
   }
   return hourContainers;
 }
+function tabEventListeners(forecast) {
+  const tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      tabSwitcher(e.target.dataset.day , forecast)
+    })
+  });
+  console.log(tabs);
+}
 function tabSwitcher(day, forecast) {
+  currentWeatherUpdater(0, forecast);
   const hourlyContentContainer = document.querySelector('.futureWeatherContent');
+  hourlyContentContainer.innerHTML = '';
   const hourlyContent = hourlyContentBuilder(forecast.forecast.forecastday[day]);
   hourlyContentContainer.append(...hourlyContent);
 }
@@ -58,6 +69,6 @@ function tabSwitcher(day, forecast) {
 export async function init() {
   //days: 0=today, 1=tomorrow, 2=day after
   const forecast = await getForecast('nottingham');
-  currentWeatherUpdater(0, forecast);
+  tabEventListeners(forecast); //attach event listeners to tabs.
   tabSwitcher(0, forecast);
 }
