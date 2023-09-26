@@ -25,7 +25,7 @@ export function currentWeatherUpdater(day, forecast) {
   const currentConditionImage = document.querySelector('.currentConditionImage');
 
   currentTemp.textContent = `${forecast.current.temp_c}°C`;
-  currentWind.textContent = `${forecast.current.wind_kph} km/h`;
+  currentWind.textContent = `${Math.round(forecast.current.wind_kph)} km/h`;
   currentHumidity.textContent = `${forecast.current.humidity}%`;
   currentConditionText.textContent = forecast.current.condition.text;
   currentConditionImage.src = forecast.current.condition.icon;
@@ -34,17 +34,17 @@ export function currentWeatherUpdater(day, forecast) {
 function dayAverageContentBuilder(day, forecast) {
   const elements = [
     elementBuilder('h3', 'dayCondition', forecast.forecast.forecastday[day].day.condition.text, ''),
-    elementBuilder('img', 'dayAverageImg', '', ''),
-    elementBuilder('h3', 'dayMaxTempLabel', 'Max', ''),
-    elementBuilder('h3', 'dayMaxTempValue', `${forecast.forecast.forecastday[day].day.maxtemp_c}°C`, ''),
-    elementBuilder('h3', 'dayHumidityLabel', 'Humidity', ''),
-    elementBuilder('h3', 'dayHumidityValue', `${forecast.forecast.forecastday[day].day.avghumidity}%`, ''),
-    elementBuilder('h3', 'dayMinTempLabel', `Min`, ''),
-    elementBuilder('h3', 'dayMinTempValue', `${forecast.forecast.forecastday[day].day.mintemp_c}°C`, ''),
-    elementBuilder('h3', 'dayWindLabel', `Wind`, ''),
-    elementBuilder('h3', 'dayWindValue', `${forecast.forecast.forecastday[day].day.maxwind_kph}km/h`, '')
+    // elementBuilder('img', 'dayAverageImg', '', ''),
+    elementBuilder('h4', 'dayMaxTempLabel', 'Max', ''),
+    elementBuilder('h4', 'dayMaxTempValue', `${forecast.forecast.forecastday[day].day.maxtemp_c}°C`, ''),
+    elementBuilder('h4', 'dayHumidityLabel', 'Humidity', ''),
+    elementBuilder('h4', 'dayHumidityValue', `${forecast.forecast.forecastday[day].day.avghumidity}%`, ''),
+    elementBuilder('h4', 'dayMinTempLabel', `Min`, ''),
+    elementBuilder('h4', 'dayMinTempValue', `${forecast.forecast.forecastday[day].day.mintemp_c}°C`, ''),
+    elementBuilder('h4', 'dayWindLabel', `Wind`, ''),
+    elementBuilder('h4', 'dayWindValue', `${forecast.forecast.forecastday[day].day.maxwind_kph}km/h`, '')
   ];
-  elements[1].src = forecast.forecast.forecastday[day].day.condition.icon; //this does not feel like an ideal solution.
+  // elements[1].src = forecast.forecast.forecastday[day].day.condition.icon; //this does not feel like an ideal solution.
   return elements;
 }
 function hourlyContentBuilder(forecast) {
