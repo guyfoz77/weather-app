@@ -1,4 +1,4 @@
-import { getForecast } from "./getData";
+import { getForecast, getDays} from "./getData";
 
 function elementBuilder(element, classList, textContent, dataName) {  //element builder copied and modified from previous project.
   const xelement = document.createElement(element);
@@ -94,14 +94,17 @@ function tabSwitcher(day, forecast) {
   hourlyContentContainer.append(...hourlyContent);
 }
 function tabLabeler() {
-  const date = new Date();
-  document.querySelectorAll('.tabs button');
-  
+  const days = getDays();
+  const tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(tab => {
+    tab.textContent = days[tab.dataset.day];
+  });
 }
 
 export async function init() {
   //days: 0=today, 1=tomorrow, 2=day after
   const forecast = await getForecast('nottingham');
   tabEventListeners(forecast); //attach event listeners to tabs.
+  tabLabeler();
   tabSwitcher(0, forecast);
 }
