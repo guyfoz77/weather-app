@@ -18,12 +18,14 @@ function elementBuilder(element, classList, textContent, dataName) {  //element 
 }
 
 export function currentWeatherUpdater(day, forecast) {
+  const location = document.querySelector('.location');
   const currentTemp = document.querySelector('.currentTemp');
   const currentWind = document.querySelector('.currentWind');
   const currentHumidity = document.querySelector('.currentHumidity');
   const currentConditionText = document.querySelector('.currentConditionText');
   const currentConditionImage = document.querySelector('.currentConditionImage');
 
+  location.textContent = `${forecast.location.name}, ${forecast.location.region}`;
   currentTemp.textContent = `${forecast.current.temp_c}°C`;
   currentWind.textContent = `${Math.round(forecast.current.wind_kph)} km/h`;
   currentHumidity.textContent = `${forecast.current.humidity}%`;
@@ -90,6 +92,11 @@ function tabSwitcher(day, forecast) {
   hourlyContentContainer.innerHTML = '';
   const hourlyContent = hourlyContentBuilder(forecast.forecast.forecastday[day]);
   hourlyContentContainer.append(...hourlyContent);
+}
+function tabLabeler() {
+  const date = new Date();
+  document.querySelectorAll('.tabs button');
+  
 }
 
 export async function init() {

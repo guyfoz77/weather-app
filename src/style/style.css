@@ -41,13 +41,27 @@ h2 {
   .todayWeather {
     display: grid;
     padding: 5%;
-    grid-template-rows: 0.5fr, repeat(5, 1fr);
+    grid-template-rows: 0.5fr 0.5fr repeat(2, 1fr);
     grid-template-columns: 1fr 2fr;
     align-items: center;
   }
+    .location {
+      grid-row: 1;
+      grid-column: 1 / span 2;
+    }
+    .currentConditionText {
+      grid-row: 2;
+    }
     .currentTemp {
-      grid-row: 1 / 4;
-      grid-column: 2 / 3;
+      grid-row: 2 / 5;
+      grid-column: 2 / span 2;
+    }
+    .currentConditionImage {
+      height: 100%;
+      grid-row: 3
+    }
+    .otherInfo {
+      grid-row: 4;
     }
   
   .futureWeather {

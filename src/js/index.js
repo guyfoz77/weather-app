@@ -5,4 +5,3 @@ import "../style/style.css";
 init();
 
 console.log(getForecast('nottingham'))
-
