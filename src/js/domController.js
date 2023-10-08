@@ -104,10 +104,25 @@ function tabLabeler() {
     tab.textContent = days[tab.dataset.day];
   });
 }
+function locationChangeToggle() {
+  const locationInputDiv = document.querySelector('.locationInput');
+  locationInputDiv.classList.toggle('hidden');
+}
+export function locationChangeButtonsInit() {
+  const settingsButton = document.querySelector('.locationChange');
+  settingsButton.addEventListener('click', () => locationChangeToggle());
+  const locationInput = document.querySelector('.locationInput input');
+  const locationInputButton = document.querySelector('.locationInput button');
+  locationInputButton.addEventListener('click', () => {
+    init(locationInput.value);
+    locationChangeToggle();
+    locationInput.value = '';
+  })
+}
 
-export async function init() {
+export async function init(location = 'nottingham') {
   //days: 0=today, 1=tomorrow, 2=day after
-  const forecast = await getForecast('nottingham');
+  const forecast = await getForecast(location);
   tabEventListeners(forecast); //attach event listeners to tabs.
   tabLabeler();
   tabSwitcher(0, forecast);

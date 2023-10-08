@@ -15,7 +15,7 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100vw;;
+  min-width: 100vw;
   background: radial-gradient(circle at 10% 20%, rgb(253, 239, 132) 0%, rgb(247, 198, 169) 54.2%, rgb(21, 186, 196) 100.3%);
 }
 h2 {
@@ -25,14 +25,10 @@ h2 {
 main {
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 500px;
   min-height: 100vh;
 }
-/* .mainContainer {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-} */
   nav {
     display: flex;
     justify-content: center;
@@ -48,16 +44,14 @@ main {
     /* border: solid black; */
     border-bottom: none;
     background-color: rgba(177, 177, 177, 0.3);
-
    }
 
 
   .todayWeather {
     display: grid;
-    position: relative;
     padding: 5%;
     grid-template-rows: 0.5fr 0.5fr repeat(2, 1fr);
-    grid-template-columns: 1fr 2fr 0.5fr;
+    grid-template-columns: 1fr 2fr;
     align-items: center;
   }
     .locationChange {
@@ -66,8 +60,12 @@ main {
       border: none;
       padding: 0;
       margin: 0;
-      width: fit-content;
+      aspect-ratio: 1;
       height: fit-content;
+    }
+    .locationChange:hover {
+      border: solid black;
+      border-radius: 50%;
     }
     .locationInput {
       grid-row: 1;
