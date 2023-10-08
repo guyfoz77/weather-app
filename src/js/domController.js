@@ -39,7 +39,7 @@ function dayAverageContentBuilder(day, forecast) {
     // elementBuilder('img', 'dayAverageImg', '', ''),
     elementBuilder('h4', 'dayMaxTempLabel', 'Max', ''),
     elementBuilder('h4', 'dayMaxTempValue', `${Math.round(forecast.forecast.forecastday[day].day.maxtemp_c)}°C`, ''),
-    elementBuilder('h4', 'dayHumidityLabel', 'Humidity', ''),
+    elementBuilder('h4', 'dayHumidityLabel', 'Hum', ''),
     elementBuilder('h4', 'dayHumidityValue', `${forecast.forecast.forecastday[day].day.avghumidity}%`, ''),
     elementBuilder('h4', 'dayMinTempLabel', `Min`, ''),
     elementBuilder('h4', 'dayMinTempValue', `${Math.round(forecast.forecast.forecastday[day].day.mintemp_c)}°C`, ''),
