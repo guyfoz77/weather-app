@@ -3,7 +3,5 @@ import { init, locationChangeButtonsInit } from "./domController";
 import "../style/style.css";
 
 
-init();
+await init();
 locationChangeButtonsInit();
-
-console.log(getForecast('nottingham'))

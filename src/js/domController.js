@@ -105,18 +105,22 @@ function tabLabeler() {
   });
 }
 function locationChangeToggle() {
+  const locationInput = document.querySelector('.locationInput input');
   const locationInputDiv = document.querySelector('.locationInput');
   locationInputDiv.classList.toggle('hidden');
+
+  locationInput.select();
 }
 export function locationChangeButtonsInit() {
-  const settingsButton = document.querySelector('.locationChange');
-  settingsButton.addEventListener('click', () => locationChangeToggle());
+  const locationText = document.querySelector('.location');
+  locationText.addEventListener('click', () => locationChangeToggle());
   const locationInput = document.querySelector('.locationInput input');
+  locationInput.value = locationText.textContent;
   const locationInputButton = document.querySelector('.locationInput button');
   locationInputButton.addEventListener('click', () => {
     init(locationInput.value);
     locationChangeToggle();
-    locationInput.value = '';
+    // locationInput.value = locationText.textContent;
   })
 }
 

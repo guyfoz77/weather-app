@@ -73,6 +73,8 @@ main {
     }
       .locationInput input {
         width: 85%;
+        position: relative;
+        z-index: 1;
       }
       .locationInput button {
         padding: 0;
@@ -83,6 +85,15 @@ main {
     .location {
       grid-row: 1;
       grid-column: 1 / span 2;
+    }
+    .location::after{
+      content: 'tap to change';
+      position: relative;
+      left: 10px;
+      font-size: 10px;
+      z-index: 0;
+      color: brown;
+      font-style: italic;
     }
     .currentConditionText {
       grid-row: 2;
